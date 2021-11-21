@@ -11,6 +11,7 @@ import {
 import StartMeeting from "../components/StartMeeting";
 import { io } from "socket.io-client";
 import { Camera } from "expo-camera";
+import Chat from "../components/Chat";
 
 const menuIcons = [
   {
@@ -84,7 +85,10 @@ function MeetingRoom() {
               setModalVisible(!modalVisible);
             }}
           >
-            <Text>HELLOOOOO</Text>
+            <Chat
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
+            />
           </Modal>
           <View style={styles.activeUsersContainer}>
             <View style={styles.cameraContainer}>
@@ -111,7 +115,10 @@ function MeetingRoom() {
                 <Text style={styles.textTile}>icon.title</Text>
               </TouchableOpacity>
             ))}
-            <TouchableOpacity style={styles.tile}>
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              style={styles.tile}
+            >
               <FontAwesome name={"comment"} size={24} color={"#efefef"} />
               <Text style={styles.textTile}>Chat</Text>
             </TouchableOpacity>
